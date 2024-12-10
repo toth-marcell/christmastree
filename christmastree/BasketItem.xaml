@@ -20,6 +20,7 @@
             <Label FontSize="14" Content="{Binding Key.Name}" HorizontalAlignment="Center"/>
             <Label Grid.Row="1" Content="{Binding Key.Price}" ContentStringFormat="Ár: {0}" HorizontalAlignment="Center"/>
             <Label Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Content="{Binding Value}" ContentStringFormat=" {0} db "/>
+            <!--<local:NumericInput Grid.Row="2"/>-->
             <Button Grid.Row="3" Height="20" Width="20" x:Name="removeButton" Click="removeButton_Click">X</Button>
         </Grid>
     </Border>

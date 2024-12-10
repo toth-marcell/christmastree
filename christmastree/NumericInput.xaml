@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="christmastree.NumericInput"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:christmastree"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Height="20" Width="75">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="decrButton" Click="decrButton_Click">-</Button>
+        <TextBox Grid.Column="1" VerticalAlignment="Center" x:Name="textbox" KeyDown="textbox_KeyDown">1</TextBox>
+        <Button Grid.Column="2" x:Name="incrButton" Click="incrButton_Click">+</Button>
+    </Grid>
+</UserControl>

@@ -30,7 +30,7 @@ namespace christmastree
 
         private void buyButton_Click(object sender, RoutedEventArgs e)
         {
-            AddToCartCallback((Decoration)DataContext, int.Parse(quantity.Text));
+            AddToCartCallback((Decoration)DataContext, quantity.Value);
         }
     }
 }

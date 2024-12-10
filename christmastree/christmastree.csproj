@@ -58,6 +58,9 @@
     <Compile Include="BasketItem.xaml.cs">
       <DependentUpon>BasketItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NumericInput.xaml.cs">
+      <DependentUpon>NumericInput.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ShopItem.xaml.cs">
       <DependentUpon>ShopItem.xaml</DependentUpon>
     </Compile>
@@ -78,6 +81,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="NumericInput.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ShopItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
