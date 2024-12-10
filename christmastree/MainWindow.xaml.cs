@@ -53,7 +53,7 @@ namespace christmastree
             foreach (var item in basket)
             {
                 TotalPrice += item.Key.Price * item.Value;
-                basketItemsPanel.Children.Add(new BasketItem(item, RemoveFromBasket));
+                basketItemsPanel.Children.Add(new BasketItem(item, RemoveFromBasket, ChangeQuantity));
             }
             totalPrice.DataContext = TotalPrice;
         }
@@ -61,6 +61,12 @@ namespace christmastree
         void RemoveFromBasket(Decoration decoration)
         {
             basket.Remove(decoration);
+            UpdateBasket();
+        }
+
+        void ChangeQuantity(KeyValuePair<Decoration, int> item)
+        {
+            basket[item.Key] = item.Value;
             UpdateBasket();
         }
     }

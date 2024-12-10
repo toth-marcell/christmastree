@@ -20,7 +20,6 @@ namespace christmastree
     /// </summary>
     public partial class NumericInput : UserControl
     {
-        public TextBox textBox;
         public int Value
         {
             get
@@ -43,7 +42,6 @@ namespace christmastree
         public NumericInput()
         {
             InitializeComponent();
-            textBox = textbox;
         }
 
         private void decrButton_Click(object sender, RoutedEventArgs e) => Value--;
