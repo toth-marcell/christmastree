@@ -10,11 +10,12 @@ namespace christmastree
     {
         public string Name { get; set; }
         public int Price { get; set; }
-
-        public Decoration(string name, int price)
+        public int Stock { get; set; }
+        public Decoration(string name, int price, int stock)
         {
             Name = name;
             Price = price;
+            Stock = stock;
         }
     }
 }

@@ -22,11 +22,11 @@ namespace christmastree
     {
         List<Decoration> decorations = new List<Decoration>
         {
-            new Decoration("dísz", 300),
-            new Decoration("dísz1", 600),
-            new Decoration("dísz2", 500),
-            new Decoration("dísz3", 100),
-            new Decoration("dísz4", 100)
+            new Decoration("dísz", 300, 500),
+            new Decoration("dísz1", 600, 500),
+            new Decoration("dísz2", 500 ,500),
+            new Decoration("dísz3", 100, 1),
+            new Decoration("dísz4", 100, 2)
         };
         Dictionary<Decoration, int> basket = new Dictionary<Decoration, int>();
         public MainWindow()
