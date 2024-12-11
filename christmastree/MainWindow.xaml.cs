@@ -1,18 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net.Http;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
+using Newtonsoft.Json;
 namespace christmastree
 {
     /// <summary>
@@ -20,22 +10,32 @@ namespace christmastree
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<Decoration> decorations = new List<Decoration>
-        {
-            new Decoration("dísz", 300, 500),
-            new Decoration("dísz1", 600, 500),
-            new Decoration("dísz2", 500 ,500),
-            new Decoration("dísz3", 100, 1),
-            new Decoration("dísz4", 100, 2)
-        };
+        List<Decoration> decorations;
         Dictionary<Decoration, int> basket = new Dictionary<Decoration, int>();
+        HttpClient httpClient = new HttpClient();
+
         public MainWindow()
         {
             InitializeComponent();
             UpdateBasket();
-            foreach (Decoration decoration in decorations)
+            LoadDecorations();
+        }
+
+        async void LoadDecorations()
+        {
+            try
             {
-                shopItemsPanel.Children.Add(new ShopItem(decoration, AddToCart));
+                HttpResponseMessage result = await httpClient.GetAsync("http://localhost:8000/api/decorations");
+                string body = await result.Content.ReadAsStringAsync();
+                decorations = JsonConvert.DeserializeObject<List<Decoration>>(body);
+                foreach (Decoration decoration in decorations)
+                {
+                    shopItemsPanel.Children.Add(new ShopItem(decoration, AddToCart));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Hiba");
             }
         }
 
