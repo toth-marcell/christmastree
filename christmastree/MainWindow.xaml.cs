@@ -26,6 +26,7 @@ namespace christmastree
             try
             {
                 HttpResponseMessage result = await httpClient.GetAsync("http://localhost:8000/api/decorations");
+                result.EnsureSuccessStatusCode();
                 string body = await result.Content.ReadAsStringAsync();
                 decorations = JsonConvert.DeserializeObject<List<Decoration>>(body);
                 foreach (Decoration decoration in decorations)
@@ -69,5 +70,46 @@ namespace christmastree
             basket[item.Key] = item.Value;
             UpdateBasket();
         }
+
+        async private void payButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                foreach (var item in basket)
+                {
+                    string jsonData = JsonConvert.SerializeObject(new BuyHttpBody(item));
+                    StringContent body = new StringContent(jsonData, System.Text.Encoding.UTF8, "application/json");
+                    HttpResponseMessage response = await httpClient.PutAsync("http://localhost:8000/api/decorations", body);
+                    if ((int)response.StatusCode == 400)
+                    {
+                        MessageBox.Show(JsonConvert.DeserializeObject<ApiError>(await response.Content.ReadAsStringAsync()).Msg);
+                        break;
+                    }
+                    response.EnsureSuccessStatusCode();
+                }
+                basket.Clear();
+                UpdateBasket();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Hiba");
+            }
+        }
+    }
+
+    struct BuyHttpBody
+    {
+        public int id { get; set; }
+        public int pcs { get; set; }
+        public BuyHttpBody(KeyValuePair<Decoration, int> pair)
+        {
+            id = pair.Key.Id;
+            pcs = pair.Value;
+        }
+    }
+
+    struct ApiError
+    {
+        public string Msg { get; set; }
     }
 }

@@ -33,7 +33,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Label x:Name="totalPrice" HorizontalAlignment="Center" Content="{Binding}" ContentStringFormat="Végösszeg: {0}" FontSize="14"/>
-            <Button Grid.Row="2" Margin="10">Kifizetés</Button>
+            <Button Grid.Row="2" Margin="10" x:Name="payButton" Click="payButton_Click">Kifizetés</Button>
         </Grid>
     </Grid>
 </Window>
