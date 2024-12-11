@@ -13,7 +13,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Button x:Name="decrButton" Click="decrButton_Click">-</Button>
-        <TextBox Grid.Column="1" VerticalAlignment="Center" x:Name="textbox" KeyDown="textbox_KeyDown">1</TextBox>
+        <TextBox Grid.Column="1" x:Name="textbox" KeyDown="textbox_KeyDown" Height="20">1</TextBox>
         <Button Grid.Column="2" x:Name="incrButton" Click="incrButton_Click">+</Button>
     </Grid>
 </UserControl>
